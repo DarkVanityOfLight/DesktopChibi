@@ -16,7 +16,7 @@ Item{
         }
 
         AnimatedImage{
-            id: blink
+            id: blink_pose
             visible: false
             paused: true
             height: chibi.height; width: chibi.width;
