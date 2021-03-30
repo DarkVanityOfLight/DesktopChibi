@@ -1,0 +1,18 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DesktopChibi
+Comment=A Chibi that lives on your Desktop
+Type=Service
+Icon=icon.png
+
+X-KDE-ParentApp=
+X-KDE-PluginInfo-Author=DarkVantiyOfLight
+X-KDE-PluginInfo-Email=darkvanity.oflight@gmail.com
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-Name=com.github.darkvanityoflight.desktopchibi
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=
+X-KDE-ServiceTypes=Plasma/Applet
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=code/main.qml
+X-KDE-PluginInfo-Category=Windows and Tasks
