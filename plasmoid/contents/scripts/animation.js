@@ -50,11 +50,11 @@ function walk(direction){
 			break;
 		case 'up':
 			chibi.rotation = bodyRotation['up'];
-			chibi.y += speed;
+			chibi.y -= speed;
 			break;
 		case 'down':
 			chibi.rotation = bodyRotation['down'];
-			chibi.y -= speed;
+			chibi.y += speed;
 			break;
 	}
 
