@@ -45,6 +45,8 @@ Item{
         }
     }
 
-
-
+    Component.onCompleted:{
+        ChibiAnimation.init();
+    }
 }
+
