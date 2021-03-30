@@ -1,5 +1,6 @@
 var config;
 var currentState;
+var bodyRotation = new Object({'foreward': 0, 'backward': 180, 'up': 270, 'down': 90});
 
 function init(){
 	currentState = default_pose;
@@ -34,3 +35,27 @@ function endBlink(){
 	}
 	
 } 
+
+function walk(direction){
+	var speed = 100
+
+	switch(direction){
+		case 'foreward':
+			chibi.rotation = bodyRotation['foreward'];
+			chibi.x += speed;
+			break;
+		case 'backward':
+			chibi.rotation = bodyRotation['backward'];
+			chibi.x -= speed;
+			break;
+		case 'up':
+			chibi.rotation = bodyRotation['up'];
+			chibi.y += speed;
+			break;
+		case 'down':
+			chibi.rotation = bodyRotation['down'];
+			chibi.y -= speed;
+			break;
+	}
+
+}
