@@ -24,25 +24,14 @@ Item{
 
         }
 
-    Timer{
-        id: activate_blink_animation;
-        interval: 10000;
-        repeat: true;
-        running: true;
-        onTriggered:{
-            ChibiAnimation.blink();
+        AnimatedImage{
+            id: walking_pose
+            visible: false
+            paused: true
+            height: chibi.height; width: chibi.width;
+            source: "../images/walking.gif"
         }
-    }
 
-    Timer{
-        id: wait_one_blink
-        interval: 1600
-        repeat: false
-        running: false
-        onTriggered:{
-            ChibiAnimation.endBlink();
-        }
-    }
 
     Component.onCompleted:{
         ChibiAnimation.init();
