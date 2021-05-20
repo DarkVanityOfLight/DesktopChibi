@@ -26,7 +26,7 @@ function blink(){
 
 function endBlink(){
 
-	if(currentState = blink){
+	if(currentState == blink){
 		changeState(default_pose);
 
 		blink_pose.paused = true;
