@@ -23,7 +23,6 @@ Item{
             source: "../images/idle.gif"
 
         }
-    }
 
     Timer{
         id: activate_blink_animation;
