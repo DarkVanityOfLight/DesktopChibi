@@ -6,6 +6,21 @@ function init(){
 	currentState = default_pose;
 }
 
+function Timer() {
+    return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
+}
+
+function delay(delayTime, cb){
+	timer = new Timer();
+	timer.interval = delayTime;
+	timer.repeat = true;
+	timer.triggered.connect(function () {
+		cb()
+	})
+
+	timer.start();
+}
+
 function changeState(state){
 	state.visible = true;
 	currentState.visible = false;
@@ -21,7 +36,11 @@ function blink(){
 			blink_pose.paused = false;
 			wait_one_blink.running = true;
 			activate_blink_animation.running = false;
+			delay(1600, endBlink)
+			return 1600
 		}
+
+		return 0
 }
 
 function endBlink(){
@@ -57,5 +76,20 @@ function walk(direction){
 			chibi.y += speed;
 			break;
 	}
+
+}
+
+function nextPose(){
+
+}
+
+// Will recursively call itself
+function animator(){
+	// Get the next pose
+	var n = nextPose();
+	// Check how long we have to wait till the next pose
+	var to_wait = n();
+	// Call this function again after the delay time
+	delay(to_wait, animator)
 
 }
