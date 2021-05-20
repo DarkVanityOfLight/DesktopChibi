@@ -1,6 +1,7 @@
 var config;
 var currentState;
 var bodyRotation = new Object({'foreward': 0, 'backward': 180, 'up': 270, 'down': 90});
+var poses = [blink, walk, ]
 
 function init(){
 	currentState = default_pose;
@@ -46,14 +47,16 @@ function blink(){
 function endBlink(){
 
 	if(currentState == blink){
-		changeState(default_pose);
-
+		defaultPose()
 		blink_pose.paused = true;
 		blink_pose.currentFrame = 0;
-		activate_blink_animation.running = true;
 	}
 	
 } 
+
+function defaultPose(){
+	changeState(default_pose);
+}
 
 function walk(direction){
 	var speed = 100
