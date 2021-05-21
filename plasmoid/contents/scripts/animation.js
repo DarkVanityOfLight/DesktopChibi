@@ -58,8 +58,29 @@ function defaultPose(){
 	changeState(default_pose);
 }
 
-function walk(direction){
-	var speed = 100
+
+function walk(){
+	changeState(walking_pose);
+
+	// Len of items plus one because random will never be one
+	let direction = ['foreward', 'backward', 'up', 'down'][Math.floor(Math.random() *(4 + 1))];
+	let steps = Math.floor(Math.random() * 100);
+	var steps_taken = 0;
+
+	function walk_one(){
+			take_step(direction);
+			if (steps_taken != steps){
+				steps_taken++;
+				delay(100, walk_one);
+			}
+
+	}
+
+}
+
+
+function take_step(direction){
+	let speed = 1
 
 	switch(direction){
 		case 'foreward':
