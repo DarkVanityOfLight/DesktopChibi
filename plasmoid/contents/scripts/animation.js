@@ -107,12 +107,12 @@ function walk(){
 			if (steps_taken != steps){
 				delay(100, walk_one);
 				steps_taken++;
+			}else{
+				changeState(default_pose);
+				animator();
 			}
 
 	}
-
-	return steps *100
-
 }
 
 
