@@ -33,7 +33,8 @@ function delay(delayTime, cb){
 	timer.interval = delayTime;
 	timer.repeat = true;
 	timer.triggered.connect(function () {
-		cb()
+		cb();
+		timer.destroy();
 	})
 
 	timer.start();
