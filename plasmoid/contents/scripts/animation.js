@@ -67,6 +67,30 @@ function defaultPose(){
 	changeState(default_pose);
 }
 
+function get_direction(){
+
+	function get_random_direction(){
+		return ['foreward', 'backward', 'up', 'down'][Math.floor(Math.random() *(3))];
+	}
+
+
+	var direction = get_random_direction();
+
+	if (chibi.x >= rightBorder){
+		direction = "backward";
+	}else if(chibi.x <= leftBorder){
+		direction = "forward";
+	}else if(chibi.y >= topBorder){
+		direction = "down";
+	}else if(chibi.y <= bottomBorder){
+		direction = "up";
+	}
+
+
+	return direction
+
+}
+
 
 function walk(){
 	changeState(walking_pose);
