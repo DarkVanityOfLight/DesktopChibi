@@ -98,7 +98,7 @@ function walk(){
 	walking_pose.paused = false;
 
 	var direction = get_direction();
-	let steps = 10
+	let steps = 100
 	var steps_taken = 0;
 
 	walk_one();
@@ -109,7 +109,7 @@ function walk(){
 				delay(100, walk_one);
 				steps_taken++;
 			}else{
-				changeState(default_pose);
+				defaultPose();
 				animator();
 			}
 
