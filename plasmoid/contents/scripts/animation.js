@@ -12,7 +12,7 @@ function Timer() {
 }
 
 function delay(delayTime, cb){
-	timer = new Timer();
+	var timer = Timer();
 	timer.interval = delayTime;
 	timer.repeat = true;
 	timer.triggered.connect(function () {
