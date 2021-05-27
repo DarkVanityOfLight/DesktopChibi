@@ -23,10 +23,12 @@ function delay(delayTime, cb){
 }
 
 function changeState(state){
-	state.visible = true;
-	currentState.visible = false;
+	if(state != currentState){
+		currentState.visible = false;
+		state.visible = true
 
-	currentState = state;
+		currentState = state;
+	}
 
 }
 
