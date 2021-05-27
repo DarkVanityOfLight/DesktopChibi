@@ -60,7 +60,7 @@ function defaultPose(){
 
 
 function walk(){
-	changeState(walking_pose);
+	changeState(walking_pose)
 
 	// Len of items plus one because random will never be one
 	let direction = ['foreward', 'backward', 'up', 'down'][Math.floor(Math.random() *(4 + 1))];
@@ -70,8 +70,8 @@ function walk(){
 	function walk_one(){
 			take_step(direction);
 			if (steps_taken != steps){
-				steps_taken++;
 				delay(100, walk_one);
+				steps_taken++;
 			}
 
 	}
