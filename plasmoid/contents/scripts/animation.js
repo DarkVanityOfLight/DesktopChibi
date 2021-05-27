@@ -96,9 +96,8 @@ function walk(){
 	changeState(walking_pose);
 	walking_pose.paused = false;
 
-	// Len of items plus one because random will never be one
-	let direction = ['foreward', 'backward', 'up', 'down'][Math.floor(Math.random() *(4 + 1))];
-	let steps = Math.floor(Math.random() * 100);
+	var direction = get_direction();
+	let steps = 10
 	var steps_taken = 0;
 
 	walk_one();
