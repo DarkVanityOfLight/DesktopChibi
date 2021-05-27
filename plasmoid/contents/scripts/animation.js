@@ -76,6 +76,8 @@ function walk(){
 
 	}
 
+	return steps *100
+
 }
 
 
