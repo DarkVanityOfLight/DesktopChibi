@@ -144,13 +144,10 @@ function nextPose(){
 
 }
 
-// Will recursively call itself
+// Should be called when an action ended
 function animator(){
-	// Get the next pose
-	var n = nextPose();
-	// Check how long we have to wait till the next pose
-	var to_wait = n();
-	// Call this function again after the delay time
-	delay(to_wait, animator)
-
+		// Get the next pose
+		var n = nextPose();
+		//Run the next pose
+		n()
 }
