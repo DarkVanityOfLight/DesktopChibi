@@ -33,8 +33,9 @@ Item{
         }
 
 
-    Component.onCompleted:{
-        ChibiAnimation.init();
+        Component.onCompleted:{
+            ChibiAnimation.init();
+        }
     }
 }
 
