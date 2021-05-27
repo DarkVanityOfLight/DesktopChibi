@@ -57,13 +57,10 @@ function blink(){
 }
 
 function endBlink(){
-
-	if(currentState == blink){
 		defaultPose()
 		blink_pose.paused = true;
 		blink_pose.currentFrame = 0;
-	}
-	
+		animator();
 } 
 
 function defaultPose(){
