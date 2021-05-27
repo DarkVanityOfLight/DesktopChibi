@@ -1,6 +1,6 @@
 var config;
 var currentState;
-var bodyRotation = new Object({'foreward': 0, 'backward': 180, 'up': 270, 'down': 90});
+var bodyRotation = new Object({'forward': 0, 'backward': 180, 'up': 90, 'down': 270});
 var poses = [blink, walk, ]
 var rightBorder;
 var leftBorder;
@@ -64,13 +64,14 @@ function endBlink(){
 } 
 
 function defaultPose(){
+	chibi.rotation = 0
 	changeState(default_pose);
 }
 
 function get_direction(){
 
 	function get_random_direction(){
-		return ['foreward', 'backward', 'up', 'down'][Math.floor(Math.random() *(3))];
+		return ['forward', 'backward', 'up', 'down'][Math.floor(Math.random() *(3))];
 	}
 
 
@@ -117,11 +118,11 @@ function walk(){
 
 
 function take_step(direction){
-	let speed = 1
+	let speed = 2
 
 	switch(direction){
-		case 'foreward':
-			chibi.rotation = bodyRotation['foreward'];
+		case 'forward':
+			chibi.rotation = bodyRotation['forward'];
 			chibi.x += speed;
 			break;
 		case 'backward':
@@ -130,11 +131,11 @@ function take_step(direction){
 			break;
 		case 'up':
 			chibi.rotation = bodyRotation['up'];
-			chibi.y -= speed;
+			chibi.y += speed;
 			break;
 		case 'down':
 			chibi.rotation = bodyRotation['down'];
-			chibi.y += speed;
+			chibi.y -= speed;
 			break;
 	}
 
