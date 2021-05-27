@@ -70,6 +70,8 @@ function walk(){
 	let steps = Math.floor(Math.random() * 100);
 	var steps_taken = 0;
 
+	walk_one();
+
 	function walk_one(){
 			take_step(direction);
 			if (steps_taken != steps){
