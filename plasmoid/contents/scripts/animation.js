@@ -2,9 +2,26 @@ var config;
 var currentState;
 var bodyRotation = new Object({'foreward': 0, 'backward': 180, 'up': 270, 'down': 90});
 var poses = [blink, walk, ]
+var rightBorder;
+var leftBorder;
+var topBorder;
+var bottomBorder;
+
 
 function init(){
 	currentState = default_pose;
+	config = readConfigurationFile()
+	rightBorder = config.screenWidth - 100;
+  leftBorder = 100;
+  topBorder = config.screenHeight - 100;
+  bottomBorder = 100;
+}
+
+function readConfigurationFile(){
+   var configEntry = {};
+   configEntry.screenWidth = plasmoid.configuration.availableWidth;
+   configEntry.screenHeight = plasmoid.configuration.availableHeight;
+   return configEntry;
 }
 
 function Timer() {
