@@ -2,6 +2,7 @@ import QtQuick 2.0
 import "../scripts/animation.js" as ChibiAnimation
 
 Item{
+    id: root;
 
     Item{
         id: chibi;
@@ -35,6 +36,7 @@ Item{
 
         Component.onCompleted:{
             ChibiAnimation.init();
+            ChibiAnimation.animator();
         }
     }
 }
