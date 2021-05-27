@@ -51,17 +51,9 @@ function changeState(state){
 }
 
 function blink(){
-
-		if (currentState == default_pose){
-			changeState(blink_pose);
-			blink_pose.paused = false;
-			wait_one_blink.running = true;
-			activate_blink_animation.running = false;
-			delay(1600, endBlink)
-			return 1600
-		}
-
-		return 0
+		changeState(blink_pose);
+		blink_pose.paused = false;
+		delay(1600, endBlink)
 }
 
 function endBlink(){
