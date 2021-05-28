@@ -119,7 +119,7 @@ function walk(){
 	function walk_one(){
 			take_step(direction);
 			if (steps_taken != steps){
-				delay(100, walk_one);
+				delay(150, walk_one);
 				steps_taken++;
 			}else{
 				walking_pose.paused = true;
