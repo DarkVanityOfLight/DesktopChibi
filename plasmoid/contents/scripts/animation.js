@@ -1,7 +1,7 @@
 var config;
 var currentState;
 var bodyRotation = new Object({'forward': 0, 'backward': 180, 'up': 90, 'down': 270});
-var poses = [blink, walk, ]
+var poses = [blink, walk, stand]
 var rightBorder;
 var leftBorder;
 var topBorder;
@@ -48,6 +48,11 @@ function changeState(state){
 		currentState = state;
 	}
 
+}
+
+function stand(){
+	defaultPose();
+	delay(Math.random() * 2000, animator);
 }
 
 function blink(){
