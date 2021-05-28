@@ -62,7 +62,6 @@ function blink(){
 }
 
 function endBlink(){
-		defaultPose()
 		blink_pose.paused = true;
 		blink_pose.currentFrame = 0;
 		animator();
@@ -123,7 +122,6 @@ function walk(){
 				delay(100, walk_one);
 				steps_taken++;
 			}else{
-				defaultPose();
 				animator();
 			}
 
@@ -170,6 +168,7 @@ function nextPose(){
 
 // Should be called when an action ended
 function animator(){
+		defaultPose();
 		// Get the next pose
 		var n = nextPose();
 		//Run the next pose
