@@ -65,6 +65,7 @@ function endBlink(){
 
 function defaultPose(){
 	chibi.rotation = 0
+	walking_pose.mirror = false
 	changeState(default_pose);
 }
 
