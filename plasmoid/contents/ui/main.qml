@@ -3,6 +3,7 @@ import "../scripts/animation.js" as ChibiAnimation
 import org.kde.plasma.plasmoid 2.0
 
 Item{
+    Plasmoid.backgroundHints: "NoBackground";
     id: root;
 
     Item{
