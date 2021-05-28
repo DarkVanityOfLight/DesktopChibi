@@ -95,9 +95,9 @@ function get_direction(){
 		}
 	}else if(chibi.y <= bottomBorder){
 		if( (chibi.x - rightBorder) <= (chibi.x - leftBorder)){
-			direction = "right_down";
-		}else{
 			direction = "left_down";
+		}else{
+			direction = "right_down";
 		}
 	}
 
