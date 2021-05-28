@@ -165,7 +165,7 @@ function take_step(direction){
 }
 
 function nextPose(){
-
+	return poses[Math.floor(Math.random() * poses.length)]
 }
 
 // Should be called when an action ended
