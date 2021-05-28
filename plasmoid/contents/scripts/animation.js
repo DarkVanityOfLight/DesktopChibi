@@ -122,6 +122,8 @@ function walk(){
 				delay(100, walk_one);
 				steps_taken++;
 			}else{
+				walking_pose.paused = true;
+				walking_pose.currentFrame = 0;
 				animator();
 			}
 
