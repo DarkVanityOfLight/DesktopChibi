@@ -77,7 +77,7 @@ function defaultPose(){
 function get_direction(){
 
 	function get_random_direction(){
-		return ['forward', 'backward', 'left_up', 'left_down', 'right_up', 'right_down'][Math.floor(Math.random() * 5)];
+		return ['forward', 'backward', 'left_up', 'left_down', 'right_up', 'right_down'][Math.floor(Math.random() * 6)];
 	}
 
 
