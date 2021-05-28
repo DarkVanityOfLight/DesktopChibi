@@ -71,7 +71,7 @@ function defaultPose(){
 function get_direction(){
 
 	function get_random_direction(){
-		return ['forward', 'backward', 'up', 'down'][Math.floor(Math.random() *(3))];
+		return ['forward', 'backward', 'left_up', 'left_down', 'right_up', 'right_down'][Math.floor(Math.random() * 5)];
 	}
 
 
@@ -82,9 +82,17 @@ function get_direction(){
 	}else if(chibi.x <= leftBorder){
 		direction = "forward";
 	}else if(chibi.y >= topBorder){
-		direction = "down";
+		if ((chibi.x - rightBorder) <= (chibi.x - leftBorder)){
+			direction = "left_up";
+		}else{
+			direction = "right_up";
+		}
 	}else if(chibi.y <= bottomBorder){
-		direction = "up";
+		if( (chibi.x - rightBorder) <= (chibi.x - leftBorder)){
+			direction = "right_down";
+		}else{
+			direction = "left_down";
+		}
 	}
 
 
@@ -126,17 +134,26 @@ function take_step(direction){
 			chibi.x += speed;
 			break;
 		case 'backward':
-			chibi.rotation = bodyRotation['backward'];
+			walking_pose.mirror = true;
 			chibi.x -= speed;
 			break;
-		case 'up':
-			chibi.rotation = bodyRotation['up'];
-			chibi.y += speed;
-			break;
-		case 'down':
-			chibi.rotation = bodyRotation['down'];
+		case 'left_up':
+			walking_pose.mirror = true;
 			chibi.y -= speed;
+			chibi.x -= speed;
 			break;
+		case 'left_down':
+			walking_pose.mirror = true;
+			chibi.y += speed;
+			chibi.x -= speed;
+			break;
+		case 'right_up':
+			chibi.y -= speed;
+			chibi.x += speed;
+			break;
+		case 'right_down':
+			chibi.y += speed;
+			chibi.x += speed;
 	}
 
 }
