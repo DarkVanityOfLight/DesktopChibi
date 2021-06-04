@@ -3,7 +3,7 @@ Encoding=UTF-8
 Name=DesktopChibi
 Comment=A Chibi that lives on your Desktop
 Type=Service
-Icon=icon.png
+Icon=../plasma/plasmoids/com.github.darkvanityoflight.desktopchibi/icon.png
 
 X-KDE-ParentApp=
 X-KDE-PluginInfo-Author=DarkVantiyOfLight
