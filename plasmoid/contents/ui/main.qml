@@ -39,7 +39,11 @@ Item{
         Component.onCompleted:{
             ChibiAnimation.init();
             ChibiAnimation.animator();
-        }
+        } 
+        
+        Behavior on x { PropertyAnimation {duration: 2500} }
+        Behavior on y { PropertyAnimation {duration: 2500} }
+
     }
 }
 

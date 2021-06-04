@@ -111,28 +111,14 @@ function walk(){
 	walking_pose.paused = false;
 
 	var direction = get_direction();
-	let steps = 100
-	var steps_taken = 0;
+	take_step(direction);
+	delay(2500, animator);
 
-	walk_one();
-
-	function walk_one(){
-			take_step(direction);
-			if (steps_taken != steps){
-				delay(150, walk_one);
-				steps_taken++;
-			}else{
-				walking_pose.paused = true;
-				walking_pose.currentFrame = 0;
-				animator();
-			}
-
-	}
 }
 
 
 function take_step(direction){
-	let speed = 2
+	let speed = 250
 
 	switch(direction){
 		case 'forward':
