@@ -13,8 +13,9 @@ function init(){
 	config = readConfigurationFile()
 	rightBorder = config.screenWidth - 100;
   leftBorder = 100;
-  topBorder = config.screenHeight - 100;
-  bottomBorder = 100;
+  topBorder = 100;
+  bottomBorder = config.screenHeight - 100;
+
 }
 
 function readConfigurationFile(){
