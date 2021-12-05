@@ -36,6 +36,28 @@ Item{
         }
 
 
+        ParallelAnimation{
+            id: movement_animation
+
+            NumberAnimation{
+                id: xAnimation
+                target: chibi
+                property: 'x'
+                to: 0
+                duration: 1000
+            }
+
+            NumberAnimation{
+                id: yAnimation
+                target: chibi
+                property: 'y'
+                to: 0
+                duration: xAnimation.duration
+            }
+
+        }
+
+
         Component.onCompleted:{
             ChibiAnimation.init();
             ChibiAnimation.animator();

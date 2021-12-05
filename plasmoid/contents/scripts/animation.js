@@ -115,7 +115,24 @@ function walk(){
 	let steps = 100
 	var steps_taken = 0;
 
-	walk_one();
+
+	let end_pos = get_new_pos(direction, steps*2)
+	xAnimation.to = end_pos[0]
+	yAnimation.to = end_pos[1]
+	movement_animation.running = true
+
+
+	delay(xAnimation.duration, stop_animation)
+
+	function stop_animation(){
+		walking_pose.paused = true;
+		walking_pose.currentFrame = 0;
+		movement_animation.running = false;
+		animator();
+	}
+
+
+//	walk_one();
 
 	function walk_one(){
 			take_step(direction);
@@ -129,6 +146,30 @@ function walk(){
 			}
 
 	}
+}
+
+function get_new_pos(direction, speed){
+
+		switch(direction){
+			case 'forward':
+				chibi.rotation = bodyRotation['forward'];
+				return [chibi.x + speed, chibi.y]
+			case 'backward':
+				walking_pose.mirror = true;
+				return [chibi.x - speed, chibi.y]
+			case 'left_up':
+				walking_pose.mirror = true;
+				return [chibi.x - speed, chibi.y - speed]
+			case 'left_down':
+				walking_pose.mirror = true;
+				return [chibi.x - speed, chibi.y + speed]
+			case 'right_up':
+				return [chibi.x + speed, chibi.y - speed]
+			case 'right_down':
+				return [chibi.x + speed, chibi.y + speed]
+
+		}
+
 }
 
 
