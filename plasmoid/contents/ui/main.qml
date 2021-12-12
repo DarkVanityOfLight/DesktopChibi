@@ -10,6 +10,8 @@ Item{
         id: chibi;
         height: 200
         width: 275
+        x: 200
+        y: 400
     
         Image{
             id: default_pose
