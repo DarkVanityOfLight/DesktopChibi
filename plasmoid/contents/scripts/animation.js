@@ -16,6 +16,19 @@ function init(){
   topBorder = 100;
   bottomBorder = config.screenHeight - 100;
 
+
+	top_left.x = leftBorder
+	top_left.y = topBorder
+
+	top_right.x = rightBorder
+	top_right.y = topBorder
+
+	bottom_left.x = leftBorder
+	bottom_left.y = bottomBorder
+
+	bottom_right.x = rightBorder
+	bottom_right.y = bottomBorder
+
 }
 
 function readConfigurationFile(){
@@ -112,13 +125,17 @@ function walk(){
 	walking_pose.paused = false;
 
 	var direction = get_direction();
-	let steps = 100
-	var steps_taken = 0;
+	let steps = Math.floor(Math.random() * 500)
+	let time = steps * 4
 
 
-	let end_pos = get_new_pos(direction, steps*2)
+	let end_pos = get_new_pos(direction, steps)
 	xAnimation.to = end_pos[0]
 	yAnimation.to = end_pos[1]
+
+	xAnimation.duration = time
+	yAnimation.duration = time
+
 	movement_animation.running = true
 
 
@@ -131,21 +148,6 @@ function walk(){
 		animator();
 	}
 
-
-//	walk_one();
-
-	function walk_one(){
-			take_step(direction);
-			if (steps_taken != steps){
-				delay(150, walk_one);
-				steps_taken++;
-			}else{
-				walking_pose.paused = true;
-				walking_pose.currentFrame = 0;
-				animator();
-			}
-
-	}
 }
 
 function get_new_pos(direction, speed){
@@ -169,40 +171,6 @@ function get_new_pos(direction, speed){
 				return [chibi.x + speed, chibi.y + speed]
 
 		}
-
-}
-
-
-function take_step(direction){
-	let speed = 2
-
-	switch(direction){
-		case 'forward':
-			chibi.rotation = bodyRotation['forward'];
-			chibi.x += speed;
-			break;
-		case 'backward':
-			walking_pose.mirror = true;
-			chibi.x -= speed;
-			break;
-		case 'left_up':
-			walking_pose.mirror = true;
-			chibi.y -= speed;
-			chibi.x -= speed;
-			break;
-		case 'left_down':
-			walking_pose.mirror = true;
-			chibi.y += speed;
-			chibi.x -= speed;
-			break;
-		case 'right_up':
-			chibi.y -= speed;
-			chibi.x += speed;
-			break;
-		case 'right_down':
-			chibi.y += speed;
-			chibi.x += speed;
-	}
 
 }
 
