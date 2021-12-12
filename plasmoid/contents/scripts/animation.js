@@ -16,19 +16,6 @@ function init(){
   topBorder = 100;
   bottomBorder = config.screenHeight - 100;
 
-
-	top_left.x = leftBorder
-	top_left.y = topBorder
-
-	top_right.x = rightBorder
-	top_right.y = topBorder
-
-	bottom_left.x = leftBorder
-	bottom_left.y = bottomBorder
-
-	bottom_right.x = rightBorder
-	bottom_right.y = bottomBorder
-
 }
 
 function readConfigurationFile(){
