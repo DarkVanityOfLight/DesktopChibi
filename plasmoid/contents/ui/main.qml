@@ -14,14 +14,14 @@ Item{
         y: 400
     
         Image{
-            id: default_pose
+            id: defaultPose
             height: chibi.height; width: chibi.width;
             visible: true
             source: "../images/default.png"
         }
 
         AnimatedImage{
-            id: blink_pose
+            id: blinkPose
             visible: false
             paused: true
             height: chibi.height; width: chibi.width;
@@ -30,7 +30,7 @@ Item{
         }
 
         AnimatedImage{
-            id: walking_pose
+            id: walkingPose
             visible: false
             paused: true
             height: chibi.height; width: chibi.width;
@@ -39,7 +39,7 @@ Item{
 
 
         ParallelAnimation{
-            id: movement_animation
+            id: movementAnimation
 
             NumberAnimation{
                 id: xAnimation

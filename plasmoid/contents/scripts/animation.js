@@ -9,7 +9,7 @@ var bottomBorder;
 
 
 function init(){
-	currentState = default_pose;
+	currentState = defaultPose;
 	config = readConfigurationFile()
 	rightBorder = config.screenWidth - 100;
   leftBorder = 100;
@@ -52,36 +52,36 @@ function changeState(state){
 }
 
 function stand(){
-	defaultPose();
+	resetTodefaultPose();
 	delay(Math.random() * 2000, animator);
 }
 
 function blink(){
-		changeState(blink_pose);
-		blink_pose.paused = false;
+		changeState(blinkPose);
+		blinkPose.paused = false;
 		delay(1600, endBlink)
 }
 
 function endBlink(){
-		blink_pose.paused = true;
-		blink_pose.currentFrame = 0;
+		blinkPose.paused = true;
+		blinkPose.currentFrame = 0;
 		animator();
 } 
 
-function defaultPose(){
+function resetTodefaultPose(){
 	chibi.rotation = 0
-	walking_pose.mirror = false
-	changeState(default_pose);
+	walkingPose.mirror = false
+	changeState(defaultPose);
 }
 
-function get_direction(){
+function getDirection(){
 
-	function get_random_direction(){
-		return ['forward', 'backward', 'left_up', 'left_down', 'right_up', 'right_down'][Math.floor(Math.random() * 6)];
+	function getRandomDirection(){
+		return ['forward', 'backward', 'leftUp', 'leftDown', 'rightUp', 'rightDown'][Math.floor(Math.random() * 6)];
 	}
 
 
-	var direction = get_random_direction();
+	var direction = getRandomDirection();
 
 	if (chibi.x >= rightBorder){
 		direction = "backward";
@@ -89,15 +89,15 @@ function get_direction(){
 		direction = "forward";
 	}else if(chibi.y >= topBorder){
 		if ((chibi.x - rightBorder) <= (chibi.x - leftBorder)){
-			direction = "left_up";
+			direction = "leftUp";
 		}else{
-			direction = "right_up";
+			direction = "rightUp";
 		}
 	}else if(chibi.y <= bottomBorder){
 		if( (chibi.x - rightBorder) <= (chibi.x - leftBorder)){
-			direction = "left_down";
+			direction = "leftDown";
 		}else{
-			direction = "right_down";
+			direction = "rightDown";
 		}
 	}
 
@@ -108,53 +108,53 @@ function get_direction(){
 
 
 function walk(){
-	changeState(walking_pose);
-	walking_pose.paused = false;
+	changeState(walkingPose);
+	walkingPose.paused = false;
 
-	var direction = get_direction();
+	var direction = getDirection();
 	let steps = Math.floor(Math.random() * 500)
 	let time = steps * 4
 
 
-	let end_pos = get_new_pos(direction, steps)
-	xAnimation.to = end_pos[0]
-	yAnimation.to = end_pos[1]
+	let endPos = getNewPos(direction, steps)
+	xAnimation.to = endPos[0]
+	yAnimation.to = endPos[1]
 
 	xAnimation.duration = time
 	yAnimation.duration = time
 
-	movement_animation.running = true
+	movementAnimation.running = true
 
 
-	delay(xAnimation.duration, stop_animation)
+	delay(xAnimation.duration, stopAnimation)
 
-	function stop_animation(){
-		walking_pose.paused = true;
-		walking_pose.currentFrame = 0;
-		movement_animation.running = false;
+	function stopAnimation(){
+		walkingPose.paused = true;
+		walkingPose.currentFrame = 0;
+		movementAnimation.running = false;
 		animator();
 	}
 
 }
 
-function get_new_pos(direction, speed){
+function getNewPos(direction, speed){
 
 		switch(direction){
 			case 'forward':
 				chibi.rotation = bodyRotation['forward'];
 				return [chibi.x + speed, chibi.y]
 			case 'backward':
-				walking_pose.mirror = true;
+				walkingPose.mirror = true;
 				return [chibi.x - speed, chibi.y]
-			case 'left_up':
-				walking_pose.mirror = true;
+			case 'leftUp':
+				walkingPose.mirror = true;
 				return [chibi.x - speed, chibi.y - speed]
-			case 'left_down':
-				walking_pose.mirror = true;
+			case 'leftDown':
+				walkingPose.mirror = true;
 				return [chibi.x - speed, chibi.y + speed]
-			case 'right_up':
+			case 'rightUp':
 				return [chibi.x + speed, chibi.y - speed]
-			case 'right_down':
+			case 'rightDown':
 				return [chibi.x + speed, chibi.y + speed]
 
 		}
@@ -167,7 +167,7 @@ function nextPose(){
 
 // Should be called when an action ended
 function animator(){
-		defaultPose();
+		resetTodefaultPose();
 		// Get the next pose
 		var n = nextPose();
 		//Run the next pose
