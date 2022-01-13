@@ -90,13 +90,13 @@ function getDirection(){
 		direction = "backward";
 	}else if(chibi.x <= leftBorder){
 		direction = "forward";
-	}else if(chibi.y >= topBorder){
+	}else if(chibi.y >= bottomBorder){
 		if ((rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftUp";
 		}else{
 			direction = "rightUp";
 		}
-	}else if(chibi.y <= bottomBorder){
+	}else if(chibi.y <= topBorder){
 		if( (rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftDown";
 		}else{
