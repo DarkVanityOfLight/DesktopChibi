@@ -83,18 +83,21 @@ function getDirection(){
 
 	var direction = getRandomDirection();
 
+	let chibiX = chibi.x
+	let chibiY = chibi.y
+
 	if (chibi.x >= rightBorder){
 		direction = "backward";
 	}else if(chibi.x <= leftBorder){
 		direction = "forward";
 	}else if(chibi.y >= topBorder){
-		if ((chibi.x - rightBorder) <= (chibi.x - leftBorder)){
+		if ((rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftUp";
 		}else{
 			direction = "rightUp";
 		}
 	}else if(chibi.y <= bottomBorder){
-		if( (chibi.x - rightBorder) <= (chibi.x - leftBorder)){
+		if( (rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftDown";
 		}else{
 			direction = "rightDown";
@@ -170,6 +173,7 @@ function animator(){
 		resetTodefaultPose();
 		// Get the next pose
 		var n = nextPose();
+		console.log("Next on is:" + n)
 		//Run the next pose
 		n()
 }
