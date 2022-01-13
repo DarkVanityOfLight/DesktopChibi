@@ -32,7 +32,7 @@ function Timer() {
 function delay(delayTime, cb){
 	var timer = Timer();
 	timer.interval = delayTime;
-	timer.repeat = true;
+	timer.repeat = false;
 	timer.triggered.connect(function () {
 		cb();
 		timer.destroy();
@@ -173,7 +173,6 @@ function animator(){
 		resetTodefaultPose();
 		// Get the next pose
 		var n = nextPose();
-		console.log("Next on is:" + n)
 		//Run the next pose
 		n()
 }
