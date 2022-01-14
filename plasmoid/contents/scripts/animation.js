@@ -83,22 +83,23 @@ function getDirection(directions=DIRECTIONS){
 	let chibiX = chibi.x
 	let chibiY = chibi.y
 
-	if (chibi.x >= rightBorder){
-		direction = "backward";
-	}else if(chibi.x <= leftBorder){
-		direction = "forward";
-	}else if(chibi.y >= bottomBorder){
+	if(chibiY >= bottomBorder){
 		if ((rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftUp";
 		}else{
 			direction = "rightUp";
 		}
+
 	}else if(chibi.y <= topBorder){
 		if( (rightBorder - chibiX) <= (chibiX - leftBorder)){
 			direction = "leftDown";
 		}else{
 			direction = "rightDown";
 		}
+	}else if(chibiX >= rightBorder){
+		direction = "backward"
+	}else if(chibiX <= leftBorder){
+		direction = "forward"
 	}
 
 
