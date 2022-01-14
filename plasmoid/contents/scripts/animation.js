@@ -107,6 +107,21 @@ function getDirection(directions=DIRECTIONS){
 
 }
 
+// Returns true if the new position is on screen
+// and false if outside of the borders
+function evalDirection(direction, steps){
+
+	let newPos = getNewPos(direction, speed)
+
+	let leftOverstep = newPos[0] <= leftBorder
+	let rightOverstep = newPos[0] >= rigtBorder
+	let topOverstep = newPos[1] <= topBorder
+	let bottomOverstep = newPos[1] >= bottomBorder
+
+	return !(leftOverstep || rightOverstep || topOverstep || bottomOverstep)
+
+}
+
 
 function walk(){
 	changeState(walkingPose);
