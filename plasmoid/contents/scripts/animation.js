@@ -76,37 +76,6 @@ function resetTodefaultPose(){
 
 const DIRECTIONS = ['forward', 'backward', 'leftUp', 'leftDown', 'rightUp', 'rightDown']
 
-function getDirection(directions=DIRECTIONS){
-
-	var direction = directions[Math.floor(Math.random() * directions.length)]
-
-	let chibiX = chibi.x
-	let chibiY = chibi.y
-
-	if(chibiY >= bottomBorder){
-		if ((rightBorder - chibiX) <= (chibiX - leftBorder)){
-			direction = "leftUp";
-		}else{
-			direction = "rightUp";
-		}
-
-	}else if(chibi.y <= topBorder){
-		if( (rightBorder - chibiX) <= (chibiX - leftBorder)){
-			direction = "leftDown";
-		}else{
-			direction = "rightDown";
-		}
-	}else if(chibiX >= rightBorder){
-		direction = "backward"
-	}else if(chibiX <= leftBorder){
-		direction = "forward"
-	}
-
-
-	return direction
-
-}
-
 // Returns true if the new position is on screen
 // and false if outside of the borders
 function evalDirection(direction, steps){
@@ -123,13 +92,72 @@ function evalDirection(direction, steps){
 }
 
 
+function getNewDirection(steps){
+
+	function getRandomDirection(dir){
+		return dir[Math.floor(Math.random() * dir.length)]
+	}
+
+	let randomDirection = getRandomDirection(DIRECTIONS)
+
+
+	let correctedDirection;
+	let chibiX = chibi.x
+	let chibiY = chibi.y
+	if(chibiY >= bottomBorder){
+		if ((rightBorder - chibiX) <= (chibiX - leftBorder)){
+			return "leftUp";
+		}else{
+			return "rightUp";
+		}
+	}else if(chibi.y <= topBorder){
+		if( (rightBorder - chibiX) <= (chibiX - leftBorder)){
+			return "leftDown";
+		}else{
+			return "rightDown";
+		}
+	}else if(chibiX >= rightBorder){
+		return "backward"
+	}else if(chibiX <= leftBorder){
+		return "forward"
+	}
+
+
+	function correctTillEval(remainderDirections){
+
+		if(remainderDirections.length == 0){
+			return undefined
+		}
+
+		let newRandomDirection = getRandomDirection(remainderDirections)
+
+		if(!evalDirection(newRandomDirection, steps)){
+			remainderDirections.splice(remainderDirections.indexOf(newRandomDirection), 1)
+			return correctTillEval(remainderDirections)
+		}else{
+			return newRandomDirection
+		}
+
+	}
+
+	let evaluated = correctTillEval(DIRECTIONS.map((x) => x));
+
+	if(evaluated){
+		return evaluated
+	}else{
+		return randomDirection
+	}
+
+}
+
+
 function walk(){
 	changeState(walkingPose);
 	walkingPose.paused = false;
 
-	var direction = getDirection();
 	let steps = Math.floor(Math.random() * 400)
 	let time = steps * 4
+	let direction = getNewDirection(steps)
 
 
 	let endPos = getNewPos(direction, steps)
