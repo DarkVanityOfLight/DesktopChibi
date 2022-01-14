@@ -111,10 +111,10 @@ function getDirection(directions=DIRECTIONS){
 // and false if outside of the borders
 function evalDirection(direction, steps){
 
-	let newPos = getNewPos(direction, speed)
+	let newPos = calculateNewPos(direction, steps)
 
 	let leftOverstep = newPos[0] <= leftBorder
-	let rightOverstep = newPos[0] >= rigtBorder
+	let rightOverstep = newPos[0] >= rightBorder
 	let topOverstep = newPos[1] <= topBorder
 	let bottomOverstep = newPos[1] >= bottomBorder
 
@@ -150,6 +150,26 @@ function walk(){
 		movementAnimation.running = false;
 		animator();
 	}
+
+}
+
+function calculateNewPos(direction, speed){
+
+		switch(direction){
+			case 'forward':
+				return [chibi.x + speed, chibi.y]
+			case 'backward':
+				return [chibi.x - speed, chibi.y]
+			case 'leftUp':
+				return [chibi.x - speed, chibi.y - speed]
+			case 'leftDown':
+				return [chibi.x - speed, chibi.y + speed]
+			case 'rightUp':
+				return [chibi.x + speed, chibi.y - speed]
+			case 'rightDown':
+				return [chibi.x + speed, chibi.y + speed]
+
+		}
 
 }
 
