@@ -74,14 +74,11 @@ function resetTodefaultPose(){
 	changeState(defaultPose);
 }
 
-function getDirection(){
+const DIRECTIONS = ['forward', 'backward', 'leftUp', 'leftDown', 'rightUp', 'rightDown']
 
-	function getRandomDirection(){
-		return ['forward', 'backward', 'leftUp', 'leftDown', 'rightUp', 'rightDown'][Math.floor(Math.random() * 6)];
-	}
+function getDirection(directions=DIRECTIONS){
 
-
-	var direction = getRandomDirection();
+	var direction = directions[Math.floor(Math.random() * directions.length)]
 
 	let chibiX = chibi.x
 	let chibiY = chibi.y
