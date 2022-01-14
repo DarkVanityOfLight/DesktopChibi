@@ -128,7 +128,7 @@ function walk(){
 	walkingPose.paused = false;
 
 	var direction = getDirection();
-	let steps = Math.floor(Math.random() * 500)
+	let steps = Math.floor(Math.random() * 400)
 	let time = steps * 4
 
 
